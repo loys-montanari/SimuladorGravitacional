@@ -16,7 +16,7 @@ namespace SimuladorGravitacional
         public Form1()
         {
             InitializeComponent();
-            DoubleBuffered = true;
+            DoubleBuffered = true;  
             this.SetStyle(ControlStyles.ResizeRedraw, true); // this is to avoid visual artifacts
         }
 

@@ -13,14 +13,31 @@ namespace SimuladorGravitacional
 {
     public partial class FrmSimulador : Form
     {
+        private const int cGrip = 16;      // Grip size
+        private const int cCaption = 25;   // Caption bar height;
+        bool mover = false;
+        Point posicao_inicial;
+
         Universo universo = new Universo();
         List<CorpoCelestial> corpoCelestiais = new List<CorpoCelestial>();
         
         public FrmSimulador()
         {
             InitializeComponent();
+            InicialDesign();
+            DoubleBuffered = true;
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
         }
-    
+        
+        public void InicialDesign()
+        {
+            BtnSimular.Visible = false;
+            label1.Visible = false; 
+            label2.Visible = false;
+            label3.Visible = false;
+ 
+
+        }
         public void lerarquivo()
         {
             
@@ -62,6 +79,7 @@ namespace SimuladorGravitacional
                     LblQtIteracoes.Text = Convert.ToString(universo.QuantidadeIteracoes);
                     LblTempo.Text = Convert.ToString(universo.Tempo);
 
+
                 }
                 catch (Exception)
                 {
@@ -76,6 +94,46 @@ namespace SimuladorGravitacional
         private void BtnCarregar_Click(object sender, EventArgs e)
         {
             lerarquivo();
+            BtnCarregar.Visible = false;
+            LblDescricao.Visible = false;
+            LblTitulo.Visible = false;
+            BtnSimular.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
         }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();   
+        }
+
+        #region Movimentar o formulario
+        private void FrmSimulador_MouseDown(object sender, MouseEventArgs e)
+        {
+            mover = true;
+            posicao_inicial = new Point(e.X, e.Y);
+        }
+
+        private void FrmSimulador_MouseUp(object sender, MouseEventArgs e)
+        {
+            mover = false;
+        }
+
+        private void FrmSimulador_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mover)
+            {
+                Point novo = PointToScreen(e.Location);
+                Location = new Point(novo.X - posicao_inicial.X, novo.Y - posicao_inicial.Y);
+
+            }
+        }
+
+        #endregion
+
+    
+
+    
     }
 }
