@@ -20,7 +20,8 @@ namespace SimuladorGravitacional
 
         Universo universo = new Universo();
         List<CorpoCelestial> corpoCelestiais = new List<CorpoCelestial>();
-        
+        List<CorpoCelestial> corpoCelestiaisiteracao = new List<CorpoCelestial>();
+
         public FrmSimulador()
         {
             InitializeComponent();
@@ -35,7 +36,8 @@ namespace SimuladorGravitacional
             label1.Visible = false; 
             label2.Visible = false;
             label3.Visible = false;
- 
+            BtnCarregar2.Visible = false;
+
 
         }
         public void lerarquivo()
@@ -110,14 +112,20 @@ namespace SimuladorGravitacional
 
                             contarPassos += 1;
                             universo.AplicaForcaGravitacional(corpoCelestiais[i], corpoCelestiais[j]);
+                            corpoCelestiaisiteracao.Add(corpoCelestiais[i]);
+                            corpoCelestiaisiteracao.Add(corpoCelestiais[j]);
+
                         }
-                    }
+                    } 
 
-                    DgvCorpos.DataSource = corpoCelestiais;
-                    
+                 
+
                 }
+               
+                DgvCorpos.DataSource = corpoCelestiaisiteracao;
+                DgvCorpos.Refresh();
+                MessageBox.Show(contarPassos.ToString());
 
-                    MessageBox.Show(contarPassos.ToString());
             }
         
         }
@@ -128,6 +136,7 @@ namespace SimuladorGravitacional
             LblDescricao.Visible = false;
             LblTitulo.Visible = false;
             BtnSimular.Visible = true;
+            BtnCarregar2.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
             label3.Visible = true;
