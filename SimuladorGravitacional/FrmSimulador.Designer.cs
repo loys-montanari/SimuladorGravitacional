@@ -43,6 +43,7 @@
             this.BtnSimular = new SimuladorGravitacional.RJButton();
             this.LblTitulo = new System.Windows.Forms.Label();
             this.LblDescricao = new System.Windows.Forms.Label();
+            this.BtnCarregar2 = new SimuladorGravitacional.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCorpos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             this.BtnCarregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.BtnCarregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCarregar.ForeColor = System.Drawing.Color.White;
-            this.BtnCarregar.Location = new System.Drawing.Point(291, 262);
+            this.BtnCarregar.Location = new System.Drawing.Point(303, 263);
             this.BtnCarregar.Name = "BtnCarregar";
             this.BtnCarregar.Size = new System.Drawing.Size(124, 33);
             this.BtnCarregar.TabIndex = 0;
@@ -94,7 +95,7 @@
             this.DgvCorpos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCorpos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DgvCorpos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.DgvCorpos.Location = new System.Drawing.Point(0, 115);
+            this.DgvCorpos.Location = new System.Drawing.Point(0, 123);
             this.DgvCorpos.Name = "DgvCorpos";
             this.DgvCorpos.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -112,7 +113,7 @@
             this.DgvCorpos.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Navy;
             this.DgvCorpos.RowTemplate.Height = 25;
             this.DgvCorpos.ShowEditingIcon = false;
-            this.DgvCorpos.Size = new System.Drawing.Size(700, 407);
+            this.DgvCorpos.Size = new System.Drawing.Size(718, 407);
             this.DgvCorpos.TabIndex = 1;
             // 
             // Lblqtcorpos
@@ -120,7 +121,7 @@
             this.Lblqtcorpos.AutoSize = true;
             this.Lblqtcorpos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Lblqtcorpos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Lblqtcorpos.Location = new System.Drawing.Point(180, 47);
+            this.Lblqtcorpos.Location = new System.Drawing.Point(238, 45);
             this.Lblqtcorpos.Name = "Lblqtcorpos";
             this.Lblqtcorpos.Size = new System.Drawing.Size(0, 21);
             this.Lblqtcorpos.TabIndex = 2;
@@ -130,7 +131,7 @@
             this.LblQtIteracoes.AutoSize = true;
             this.LblQtIteracoes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblQtIteracoes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LblQtIteracoes.Location = new System.Drawing.Point(258, 46);
+            this.LblQtIteracoes.Location = new System.Drawing.Point(316, 44);
             this.LblQtIteracoes.Name = "LblQtIteracoes";
             this.LblQtIteracoes.Size = new System.Drawing.Size(0, 21);
             this.LblQtIteracoes.TabIndex = 2;
@@ -140,7 +141,7 @@
             this.LblTempo.AutoSize = true;
             this.LblTempo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblTempo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LblTempo.Location = new System.Drawing.Point(347, 46);
+            this.LblTempo.Location = new System.Drawing.Point(405, 44);
             this.LblTempo.Name = "LblTempo";
             this.LblTempo.Size = new System.Drawing.Size(0, 21);
             this.LblTempo.TabIndex = 2;
@@ -150,7 +151,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(180, 22);
+            this.label1.Location = new System.Drawing.Point(238, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 3;
@@ -161,7 +162,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(258, 22);
+            this.label2.Location = new System.Drawing.Point(316, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 17);
             this.label2.TabIndex = 3;
@@ -172,7 +173,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(347, 22);
+            this.label3.Location = new System.Drawing.Point(405, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 3;
@@ -185,7 +186,7 @@
             this.BtnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BtnClose.Location = new System.Drawing.Point(662, 3);
+            this.BtnClose.Location = new System.Drawing.Point(680, 4);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(31, 23);
             this.BtnClose.TabIndex = 4;
@@ -207,7 +208,7 @@
             this.BtnSimular.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.BtnSimular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSimular.ForeColor = System.Drawing.Color.White;
-            this.BtnSimular.Location = new System.Drawing.Point(28, 42);
+            this.BtnSimular.Location = new System.Drawing.Point(67, 40);
             this.BtnSimular.Name = "BtnSimular";
             this.BtnSimular.Size = new System.Drawing.Size(124, 33);
             this.BtnSimular.TabIndex = 0;
@@ -221,7 +222,7 @@
             this.LblTitulo.AutoSize = true;
             this.LblTitulo.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LblTitulo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LblTitulo.Location = new System.Drawing.Point(180, 164);
+            this.LblTitulo.Location = new System.Drawing.Point(192, 165);
             this.LblTitulo.Name = "LblTitulo";
             this.LblTitulo.Size = new System.Drawing.Size(327, 37);
             this.LblTitulo.TabIndex = 5;
@@ -231,19 +232,42 @@
             // 
             this.LblDescricao.AutoSize = true;
             this.LblDescricao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LblDescricao.Location = new System.Drawing.Point(73, 467);
+            this.LblDescricao.Location = new System.Drawing.Point(92, 467);
             this.LblDescricao.Name = "LblDescricao";
             this.LblDescricao.Size = new System.Drawing.Size(548, 15);
             this.LblDescricao.TabIndex = 6;
             this.LblDescricao.Text = "Leia um arquivo com dados de um universo e seus corpos celestiais e simule a atra" +
     "ção entre os corpos.";
             // 
+            // BtnCarregar2
+            // 
+            this.BtnCarregar2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.BtnCarregar2.BackgroundColor = System.Drawing.SystemColors.HotTrack;
+            this.BtnCarregar2.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCarregar2.BorderColor1 = System.Drawing.Color.DarkGray;
+            this.BtnCarregar2.BorderRadius = 5;
+            this.BtnCarregar2.BorderRadius1 = 5;
+            this.BtnCarregar2.BorderSize = 0;
+            this.BtnCarregar2.BorderSize1 = 0;
+            this.BtnCarregar2.FlatAppearance.BorderSize = 0;
+            this.BtnCarregar2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
+            this.BtnCarregar2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCarregar2.ForeColor = System.Drawing.Color.White;
+            this.BtnCarregar2.Location = new System.Drawing.Point(516, 40);
+            this.BtnCarregar2.Name = "BtnCarregar2";
+            this.BtnCarregar2.Size = new System.Drawing.Size(124, 33);
+            this.BtnCarregar2.TabIndex = 0;
+            this.BtnCarregar2.Text = "Carregar Arquivo";
+            this.BtnCarregar2.TextColor = System.Drawing.Color.White;
+            this.BtnCarregar2.UseVisualStyleBackColor = false;
+            this.BtnCarregar2.Click += new System.EventHandler(this.BtnCarregar_Click);
+            // 
             // FrmSimulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(700, 522);
+            this.ClientSize = new System.Drawing.Size(718, 530);
             this.Controls.Add(this.LblDescricao);
             this.Controls.Add(this.LblTitulo);
             this.Controls.Add(this.BtnClose);
@@ -254,6 +278,7 @@
             this.Controls.Add(this.LblQtIteracoes);
             this.Controls.Add(this.Lblqtcorpos);
             this.Controls.Add(this.BtnSimular);
+            this.Controls.Add(this.BtnCarregar2);
             this.Controls.Add(this.BtnCarregar);
             this.Controls.Add(this.DgvCorpos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -285,5 +310,6 @@
         private RJButton BtnSimular;
         private Label LblTitulo;
         private Label LblDescricao;
+        private RJButton BtnCarregar2;
     }
 }
