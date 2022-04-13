@@ -214,7 +214,7 @@
             this.BtnSimular.Text = "Simular Gravidade";
             this.BtnSimular.TextColor = System.Drawing.Color.White;
             this.BtnSimular.UseVisualStyleBackColor = false;
-            this.BtnSimular.Click += new System.EventHandler(this.BtnCarregar_Click);
+            this.BtnSimular.Click += new System.EventHandler(this.BtnSimulador_Click);
             // 
             // LblTitulo
             // 

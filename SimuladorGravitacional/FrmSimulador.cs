@@ -39,8 +39,7 @@ namespace SimuladorGravitacional
 
         }
         public void lerarquivo()
-        {
-            
+        {          
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -55,7 +54,7 @@ namespace SimuladorGravitacional
                               {
                                   QuantidadeCorpos = Convert.ToInt32(c[0]),
                                   QuantidadeIteracoes = Convert.ToInt32(c[1]),
-                                  Tempo = Convert.ToInt32(c[2]),
+                                  Tempo = Convert.ToDouble(c[2]),
                               })
                                 .First();
 
@@ -80,7 +79,7 @@ namespace SimuladorGravitacional
                     LblTempo.Text = Convert.ToString(universo.Tempo);
 
 
-                }
+                }                
                 catch (Exception)
                 {
                     MessageBox.Show("Ops!. O arquivo não está conforme leiaute");
@@ -91,6 +90,37 @@ namespace SimuladorGravitacional
 
         }
 
+        public void run()
+        {
+
+            int contarPassos = 0;
+
+            int iteration=0;
+            if (corpoCelestiais.Count > 1)
+            {
+                for ( iteration = 0; iteration <= universo.QuantidadeIteracoes; iteration++)
+                {
+                    contarPassos += 1;
+                    for (var i = 0; i < corpoCelestiais.Count; ++i)
+                    {
+
+                        contarPassos += 1;
+                        for (var j = i + 1; j < corpoCelestiais.Count; ++j)
+                        {
+
+                            contarPassos += 1;
+                            universo.AplicaForcaGravitacional(corpoCelestiais[i], corpoCelestiais[j]);
+                        }
+                    }
+
+                    DgvCorpos.DataSource = corpoCelestiais;
+                    
+                }
+
+                    MessageBox.Show(contarPassos.ToString());
+            }
+        
+        }
         private void BtnCarregar_Click(object sender, EventArgs e)
         {
             lerarquivo();
@@ -103,6 +133,13 @@ namespace SimuladorGravitacional
             label3.Visible = true;
         }
 
+
+        private void BtnSimulador_Click(object sender, EventArgs e)
+        {
+            run();
+
+
+        }
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();   

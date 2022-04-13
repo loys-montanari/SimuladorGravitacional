@@ -12,7 +12,7 @@ namespace SimuladorGravitacional.Models
 
         public int QuantidadeCorpos;
         public int QuantidadeIteracoes;
-        public int Tempo;
+        public double Tempo;
        
              
 
@@ -55,8 +55,8 @@ namespace SimuladorGravitacional.Models
             double rx = Math.Abs(body1.PosX - body2.PosX);
             double ry = Math.Abs(body1.PosY - body2.PosY);
 
-            double Fx = F * Math.Cos(r / rx);
-            double Fy = F * Math.Sin(r / ry);
+            double Fx = F * (rx/r);
+            double Fy = F *(ry/r);
 
             AplicaForca(body1, Fx, Fy);
             AplicaForca(body2, Fx * (-1), Fy * (-1));
