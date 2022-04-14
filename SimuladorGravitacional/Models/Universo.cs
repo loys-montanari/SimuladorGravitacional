@@ -30,6 +30,27 @@ namespace SimuladorGravitacional.Models
             return force;
         }
 
+
+        public double SomaForca(List<CorpoCelestial> lista, CorpoCelestial body1)
+        {
+            double f = 0;
+            double force = 0;
+
+            
+             
+            for (var j = 0; j < lista.Count; ++j)
+            {  if (lista[j] != body1)
+                {
+                    double distancia = CalculaDistancia(body1, lista[j]);
+                    force = G * ((body1.Massa * lista[j].Massa) / Math.Pow(distancia, 2));
+
+                    f = force + f;
+                }
+            }
+                return f;
+
+          }
+
         public void AplicaForca(CorpoCelestial body, double Fx, double Fy)
         {
             double Ax = Fx / body.Massa;
@@ -48,9 +69,9 @@ namespace SimuladorGravitacional.Models
         }
 
 
-        public void AplicaForcaGravitacional(CorpoCelestial body1, CorpoCelestial body2)
+        public void AplicaForcaGravitacional(List<CorpoCelestial> lista, CorpoCelestial body1, CorpoCelestial body2)
         {
-            double F = CalculaForca(body1, body2);
+            double F = SomaForca(lista, body1);
 
             double r = CalculaDistancia(body1, body2);
             double rx = body1.PosX - body2.PosX;
@@ -64,51 +85,6 @@ namespace SimuladorGravitacional.Models
         }
 
 
-
-        //public double DecomporForcaX(CorpoCelestial body1, CorpoCelestial body2)
-        //{
-        //    double F = CalculaForca(body1, body2);
-
-        //    double r = CalculaDistancia(body1, body2);
-        //    double rx = body2.PosX - body1.PosX;
-
-        //    double Fx = F * (rx/r);
-        //    Fx = Fx + Fx;
-        //    return Fx;
-
-        //    //AplicaForca(body1, Fx, Fy);
-        //    //AplicaForca(body2, Fx , Fy );
-        //}
-
-        //public double DecomporForcaY(CorpoCelestial body1, CorpoCelestial body2)
-        //{
-        //    double F = CalculaForca(body1, body2);
-
-        //    double r = CalculaDistancia(body1, body2);
-
-        //    double ry = body2.PosY - body1.PosY;
-
-        //    double Fy = F * (ry / r);
-
-        //    Fy = Fy + Fy;
-        //    return Fy;
-
-        //    //AplicaForca(body1, Fx, Fy);
-        //    //AplicaForca(body2, Fx , Fy );
-        //}
-
-        //public void AplicaForcaGravitacional(CorpoCelestial body1, CorpoCelestial body2)
-        //{
-        //    double Fx = DecomporForcaX(body1, body2);
-        //    double Fy = DecomporForcaX(body1, body2);
-
-
-        //    AplicaForca(body1, Fx, Fy);
-        //    AplicaForca(body2, Fx , Fy );
-
-
-
-        //}
 
         #endregion
 

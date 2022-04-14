@@ -94,7 +94,7 @@ namespace SimuladorGravitacional
 
         public void run()
         {
-
+            List<string> output = new List<string>();
             int contarPassos = 0;
 
             int iteration=0;
@@ -102,7 +102,7 @@ namespace SimuladorGravitacional
             {
                 for ( iteration = 0; iteration < universo.QuantidadeIteracoes; iteration++)
                 {
-                    
+                    output.Add(String.Format("** Interacao {0} ************", iteration+1));
                     for (var i = 0; i < corpoCelestiais.Count; ++i)
                     {
 
@@ -111,26 +111,22 @@ namespace SimuladorGravitacional
                         {
 
                             contarPassos += 1;
-                            universo.AplicaForcaGravitacional(corpoCelestiais[i], corpoCelestiais[j]);
+                            universo.AplicaForcaGravitacional(corpoCelestiais, corpoCelestiais[i], corpoCelestiais[j]);
 
 
-                            var novo = new CorpoCelestial();
-                            novo =(CorpoCelestial)corpoCelestiais[i];
-                            corpoCelestiaisiteracao.Add(novo);
-                            corpoCelestiaisiteracao.Add(corpoCelestiais[j]);
                         }
-                        
-
-
+                        var novo = new CorpoCelestial();
+                        novo = corpoCelestiais[i];
+                        corpoCelestiaisiteracao.Add(novo);
+                        output.Add(novo.formatOutputFile());
                     }
-
-
 
                 }
                
                 DgvCorpos.DataSource = corpoCelestiaisiteracao;
                 DgvCorpos.Refresh();
                 MessageBox.Show(contarPassos.ToString());
+                SaveCelestialBodies(output);
 
             }
         
@@ -160,6 +156,23 @@ namespace SimuladorGravitacional
             this.Close();   
         }
 
+        public void SaveCelestialBodies(List<string> output)
+        {
+            string file = "C:\\Users\\lamontanari\\source\\repos\\SimuladorGravitacional\\SimuladorGravitacional\\Files\\outputBodies.txt";
+
+            FileStream myFile = new FileStream(file, FileMode.Open, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(myFile, Encoding.UTF8);
+
+
+            foreach (var item in output)
+            {
+                sw.WriteLine(item);
+            }
+
+            sw.Close();
+            myFile.Close();
+
+        }
         #region Movimentar o formulario
         private void FrmSimulador_MouseDown(object sender, MouseEventArgs e)
         {
