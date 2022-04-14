@@ -95,6 +95,7 @@ namespace SimuladorGravitacional
         public void run()
         {
             List<string> output = new List<string>();
+            output.Add(String.Format("{0};{1}", universo.QuantidadeCorpos, universo.QuantidadeIteracoes));
             int contarPassos = 0;
 
             int iteration=0;
