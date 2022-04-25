@@ -31,25 +31,47 @@ namespace SimuladorGravitacional.Models
         }
 
 
-        public double SomaForca(List<CorpoCelestial> lista, CorpoCelestial body1)
+        public double SomaForcaX(List<CorpoCelestial> lista, CorpoCelestial body1)
         {
-            double f = 0;
+            double somatoriofx = 0;
             double force = 0;
 
-            
-             
+              
             for (var j = 0; j < lista.Count; ++j)
             {  if (lista[j] != body1)
                 {
                     double distancia = CalculaDistancia(body1, lista[j]);
-                    force = G * ((body1.Massa * lista[j].Massa) / Math.Pow(distancia, 2));
-
-                    f = force + f;
+                    double forca = CalculaForca(body1, lista[j]);
+                    double rx = body1.PosX - lista[j].PosX;
+                    double Fx = forca * (rx / distancia);
+                    
+                    somatoriofx = force + somatoriofx;
                 }
             }
-                return f;
+                return somatoriofx;
 
           }
+
+        public double SomaForcaY(List<CorpoCelestial> lista, CorpoCelestial body1)
+        {
+            double somatoriofy = 0;
+            double force = 0;
+
+            for (var j = 0; j < lista.Count; ++j)
+            {
+                if (lista[j] != body1)
+                {
+                    double distancia = CalculaDistancia(body1, lista[j]);
+                    double forca = CalculaForca(body1, lista[j]);
+                    double ry = body1.PosY - lista[j].PosY;
+                    double Fy = forca * (ry / distancia);
+
+                    somatoriofy = force + somatoriofy;
+                }
+            }
+            return somatoriofy;
+
+        }
 
         public void AplicaForca(CorpoCelestial body, double Fx, double Fy)
         {
@@ -71,17 +93,17 @@ namespace SimuladorGravitacional.Models
 
         public void AplicaForcaGravitacional(List<CorpoCelestial> lista, CorpoCelestial body1, CorpoCelestial body2)
         {
-            double F = SomaForca(lista, body1);
 
-            double r = CalculaDistancia(body1, body2);
-            double rx = body1.PosX - body2.PosX;
-            double ry = body1.PosY - body2.PosY;
 
-            double Fx = F * (rx / r);
-            double Fy = F * (ry / r);
+                double rx = body1.PosX - body2.PosX;
+                double ry = body1.PosY - body2.PosY;
 
-            AplicaForca(body1, Fx, Fy);
-            AplicaForca(body2, Fx  , Fy );
+                double Fx = SomaForcaX(lista,body1);
+                double Fy = SomaForcaY(lista, body1);
+
+                AplicaForca(body1, Fx, Fy);
+                AplicaForca(body2, Fx, Fy);            
+
         }
 
 
