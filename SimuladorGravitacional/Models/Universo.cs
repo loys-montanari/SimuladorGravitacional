@@ -100,7 +100,7 @@ namespace SimuladorGravitacional.Models
                 AplicaForca(body1, Fx, Fy);
         }
 
-        public void VerificaColisao (List<CorpoCelestial> lista)
+        public void VerificaColisao2(List<CorpoCelestial> lista)
         {
             double distancia;
             for (int i = 0; i < lista.Count; i++)
@@ -130,6 +130,52 @@ namespace SimuladorGravitacional.Models
                     else
                     {
                         break;
+                    }
+                }
+            }
+        }
+
+        public void VerificaColisao(List<CorpoCelestial> lista)
+        {
+            double distancia;
+            foreach (CorpoCelestial i in lista)
+            {
+                foreach (CorpoCelestial j in lista)
+                {
+                    if (i != j)
+                    {
+                        distancia = CalculaDistancia(i, j);
+
+                        if (distancia < i.Raio +j.Raio)
+                        {
+                            double PI = 3.1415926535897931;
+                            double SomaVolume = ((4 / 3) * PI * Math.Pow(i.Raio, 3)) + ((4 / 3) * PI * Math.Pow(j.Raio, 3));
+                            var novo = new CorpoCelestial()
+                            {
+                                Massa = i.Massa + j.Massa
+                                ,
+                                Nome = string.Concat(j.Nome, i.Nome)
+                                ,
+                                PosX = ((i.PosX * i.Massa) + (j.PosX * j.Massa)) / (i.Massa + j.Massa)
+                                ,
+                                PosY = ((i.PosY * i.Massa) + (j.PosY * j.Massa)) / (i.Massa + j.Massa)
+                                ,
+                                Raio = Math.Cbrt((3 * SomaVolume) / (4 * PI))
+                                ,
+                                VelX = ((i.Massa * i.VelX) + (j.Massa * j.VelX)) / (i.Massa + j.Massa)
+                                ,
+                                VelY = ((i.Massa * i.VelY) + (j.Massa * j.VelY)) / (i.Massa + j.Massa)
+                            };
+
+                            lista.Remove(i);
+                            lista.Remove(j);
+                            lista.Add(novo);
+                            break;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
             }
