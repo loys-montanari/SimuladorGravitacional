@@ -16,7 +16,7 @@ namespace SimuladorGravitacional.Models
         public double PosY { get; set; }
         public double VelX { get; set; }
         public double VelY { get; set; }
-
+       
         public string formatOutputFile()
         {
             return String.Format("{0};{1};{2};{3};{4};{5};{6}", Nome, Massa, Raio, PosX, PosY, VelX, VelY);

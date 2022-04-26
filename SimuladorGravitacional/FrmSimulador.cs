@@ -112,7 +112,7 @@ namespace SimuladorGravitacional
                         {
 
                             contarPassos += 1;
-                            universo.AplicaForcaGravitacional(corpoCelestiais, corpoCelestiais[i], corpoCelestiais[j]);
+                            universo.AplicaForcaGravitacional(corpoCelestiais, corpoCelestiais[i]);
 
 
                         }
@@ -127,10 +127,59 @@ namespace SimuladorGravitacional
                 DgvCorpos.DataSource = corpoCelestiaisiteracao;
                 DgvCorpos.Refresh();
                 MessageBox.Show(contarPassos.ToString());
-                SaveCelestialBodies(output);
+                //SaveCelestialBodies(output);
 
             }
         
+        }
+
+        public void run2()
+        {
+            List<string> output = new List<string>();
+            output.Add(String.Format("{0};{1}", universo.QuantidadeCorpos, universo.QuantidadeIteracoes));
+            int contarPassos = 0;
+
+            int iteration = 0;
+            if (corpoCelestiais.Count > 1)
+            {
+                for (iteration = 0; iteration < universo.QuantidadeIteracoes; iteration++)
+                {
+                    output.Add(String.Format("** Interacao {0} ************", iteration + 1));
+                    universo.VerificaColisao(corpoCelestiais);
+                        foreach (CorpoCelestial j in corpoCelestiais)
+                        {
+ 
+                                
+                        universo.AplicaForcaGravitacional(corpoCelestiais, j);
+                        var t = j;
+                        var novo = new CorpoCelestial() { 
+                             Massa = t.Massa
+                            , Nome = t.Nome
+                            , PosX = t.PosX
+                            , PosY = t.PosY
+                            , Raio = t.Raio
+                            , VelX = t.VelX
+                            , VelY = t.VelY };
+
+                        corpoCelestiaisiteracao.Add(novo);
+
+                              
+                                contarPassos += 1;
+                            
+
+                        }
+
+                  
+
+                }
+
+                DgvCorpos.DataSource = corpoCelestiaisiteracao;
+                DgvCorpos.Refresh();
+                MessageBox.Show(contarPassos.ToString());
+                //SaveCelestialBodies(output);
+
+            }
+
         }
         private void BtnCarregar_Click(object sender, EventArgs e)
         {
@@ -148,7 +197,7 @@ namespace SimuladorGravitacional
 
         private void BtnSimulador_Click(object sender, EventArgs e)
         {
-            run();
+            run2();
 
 
         }
@@ -157,23 +206,23 @@ namespace SimuladorGravitacional
             this.Close();   
         }
 
-        public void SaveCelestialBodies(List<string> output)
-        {
-            string file = "C:\\Users\\lamontanari\\source\\repos\\SimuladorGravitacional\\SimuladorGravitacional\\Files\\outputBodies.txt";
+        //public void SaveCelestialBodies(List<string> output)
+        //{
+        //    string file = "outputBodies.txt";
 
-            FileStream myFile = new FileStream(file, FileMode.Open, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(myFile, Encoding.UTF8);
+        //    FileStream myFile = new FileStream(file, FileMode.Open, FileAccess.Write);
+        //    StreamWriter sw = new StreamWriter(myFile, Encoding.UTF8);
 
 
-            foreach (var item in output)
-            {
-                sw.WriteLine(item);
-            }
+        //    foreach (var item in output)
+        //    {
+        //        sw.WriteLine(item);
+        //    }
 
-            sw.Close();
-            myFile.Close();
+        //    sw.Close();
+        //    myFile.Close();
 
-        }
+        //}
         #region Movimentar o formulario
         private void FrmSimulador_MouseDown(object sender, MouseEventArgs e)
         {
