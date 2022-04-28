@@ -162,9 +162,10 @@ namespace SimuladorGravitacional
                             , VelY = t.VelY };
 
                         corpoCelestiaisiteracao.Add(novo);
+                        output.Add(novo.formatOutputFile());
 
-                              
-                                contarPassos += 1;
+
+                        contarPassos += 1;
                             
 
                         }
@@ -176,7 +177,7 @@ namespace SimuladorGravitacional
                 DgvCorpos.DataSource = corpoCelestiaisiteracao;
                 DgvCorpos.Refresh();
                 MessageBox.Show(contarPassos.ToString());
-                //SaveCelestialBodies(output);
+                SaveCelestialBodies(output);
 
             }
 
@@ -206,23 +207,23 @@ namespace SimuladorGravitacional
             this.Close();   
         }
 
-        //public void SaveCelestialBodies(List<string> output)
-        //{
-        //    string file = "outputBodies.txt";
+        public void SaveCelestialBodies(List<string> output)
+        {
+            string file = "OutputFile.txt";
 
-        //    FileStream myFile = new FileStream(file, FileMode.Open, FileAccess.Write);
-        //    StreamWriter sw = new StreamWriter(myFile, Encoding.UTF8);
+            FileStream myFile = new FileStream(file, FileMode.Open, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(myFile, Encoding.UTF8);
 
 
-        //    foreach (var item in output)
-        //    {
-        //        sw.WriteLine(item);
-        //    }
+            foreach (var item in output)
+            {
+                sw.WriteLine(item);
+            }
 
-        //    sw.Close();
-        //    myFile.Close();
+            sw.Close();
+            myFile.Close();
 
-        //}
+        }
         #region Movimentar o formulario
         private void FrmSimulador_MouseDown(object sender, MouseEventArgs e)
         {
